@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Mini Planner Escolar</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #007BFF;
+      color: white;
+      padding: 1em;
+      text-align: center;
+    }
+    nav {
+      margin-top: 0.5em;
+    }
+    nav button {
+      margin: 0 10px;
+      padding: 0.5em 1em;
+      background: white;
+      border: 1px solid #007BFF;
+      color: #007BFF;
+      cursor: pointer;
+    }
+    main {
+      padding: 1em;
+    }
+    input, button {
+      margin: 0.5em 0;
+      padding: 0.5em;
+    }
+    .tarea {
+      background: white;
+      margin: 0.5em 0;
+      padding: 0.5em;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Mi Planner Escolar</h1>
+    <nav>
+      <button onclick="mostrarMensaje('pagina principal')">Inicio</button>
+      <button onclick="mostrarMensaje('Este proyecto fue desarrollado con el objetivo de ayudar a los estudiantes a organizar sus tareas y actividades escolares mediante una interfaz amigable y funcional.')">Sobre mi</button>
+      <button onclick="mostrarMensaje('Para contactarse, al siguiente correo: Martinr739@gmail.com')">Contacto</button>
+      <button onclick="mostrarMensaje('elija su usuario:')">Usuario</button>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Agregar tarea</h2>
+    <input type="text" id="titulo" placeholder="Título de la tarea">
+<input type="date" id="fecha">
+<button onclick="agregarTarea()">Agregar</button>
+
+    
+
+    <div id="listaTareas"></div>
+  </main>
+
+  <script>
+    function mostrarMensaje(seccion) {
+      alert( seccion);
+    }
+
+    function agregarTarea() {
+      const titulo = document.getElementById("titulo").value;
+      const fecha = document.getElementById("fecha").value;
+
+      if (!titulo) {
+        alert("Por favor escribí un título.");
+        return;
+      }
+      const div = document.createElement("div");
+      div.className = "tarea";
+      div.textContent = `${titulo} (Fecha: ${fecha || "sin asignar"})`;
+
+      document.getElementById("listaTareas").appendChild(div);
+      document.getElementById("titulo").value = "";
+      document.getElementById("fecha").value = "";
+
+    }
+  </script>
+</body>
+</html>
